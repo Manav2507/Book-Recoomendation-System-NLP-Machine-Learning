@@ -3,7 +3,11 @@
 An **end-to-end intelligent book recommendation system** built with NLP, clustering, and machine learning to help users discover books they’ll love. Includes an interactive Streamlit web app deployed on AWS EC2.
 
 ---
-![Preview]()
+## 📸 Demo Screenshot
+
+![Preview](https://github.com/Manav2507/Book-Recoomendation-System-NLP-Machine-Learning/blob/main/6_1.png)
+
+
 ## 📌 Problem Statement
 
 > In a world with thousands of audiobooks, how can we help users find the right book based on their preferences or previous listening history?

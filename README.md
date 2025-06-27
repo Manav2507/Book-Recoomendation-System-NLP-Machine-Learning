@@ -3,7 +3,7 @@
 An **end-to-end intelligent book recommendation system** built with NLP, clustering, and machine learning to help users discover books they’ll love. Includes an interactive Streamlit web app deployed on AWS EC2.
 
 ---
-
+![Preview]()
 ## 📌 Problem Statement
 
 > In a world with thousands of audiobooks, how can we help users find the right book based on their preferences or previous listening history?
@@ -76,6 +76,3 @@ This project tackles that challenge by combining **NLP**, **clustering**, and **
 | Visualization| Streamlit, Matplotlib, Power BI (optional)             |
 
 ---
-
-## 📂 Project Structure
-

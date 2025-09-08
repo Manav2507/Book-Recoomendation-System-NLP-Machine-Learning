@@ -33,7 +33,9 @@ st.markdown("Get personalized book recommendations based on your preferences!")
 mode = st.radio("Choose Recommendation Mode", ["📘 By Favorite Book", "🎯 By Genre"])
 
 if mode == "📘 By Favorite Book":
-    book_input = st.text_input("Enter your favorite book title").strip().lower()
+    book_input = st.text_input(
+            "Enter your favorite book title"
+            ).strip().lower()
 
     if book_input:
         if book_input not in indices:

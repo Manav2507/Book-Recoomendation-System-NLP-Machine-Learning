@@ -1,6 +1,5 @@
 import streamlit as st
 import pandas as pd
-import numpy as np
 from sklearn.metrics.pairwise import linear_kernel
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.cluster import KMeans
@@ -11,7 +10,10 @@ import seaborn as sns
 df = pd.read_excel("complete_preprocessing.xlsx")
 
 # Ensure genre column is list
-df['Genres Extracted'] = df['Genres Extracted'].apply(eval if isinstance(df['Genres Extracted'].iloc[0], str) else lambda x: x)
+df['Genres Extracted'] = df['Genres Extracted'].apply(
+    eval if isinstance(df['Genres Extracted'].iloc[0], str)
+    else lambda x: x
+)
 
 # TF-IDF
 tfidf = TfidfVectorizer(stop_words='english')
@@ -29,7 +31,10 @@ st.title("📚 Book Recommendation System")
 st.markdown("Get personalized book recommendations based on your preferences!")
 
 # --- User Input
-mode = st.radio("Choose Recommendation Mode", ["📘 By Favorite Book", "🎯 By Genre"])
+mode = st.radio(
+    "Choose Recommendation Mode",
+    ["📘 By Favorite Book", "🎯 By Genre"]
+)
 
 if mode == "📘 By Favorite Book":
     book_input = st.text_input("Enter your favorite book title").strip().lower()
@@ -43,29 +48,46 @@ if mode == "📘 By Favorite Book":
             sim_scores = sorted(sim_scores, key=lambda x: x[1], reverse=True)
             sim_scores = sim_scores[1:6]
             book_indices = [i[0] for i in sim_scores]
-            recs = df.iloc[book_indices][['Book Name', 'Author', 'Rating', 'Genres Extracted']]
+
+            recs = df.iloc[book_indices][
+                ['Book Name', 'Author', 'Rating', 'Genres Extracted']
+            ]
 
             st.subheader("🔮 Recommended Books:")
             st.dataframe(recs)
 
 elif mode == "🎯 By Genre":
-    all_genres = sorted(set(genre for sublist in df['Genres Extracted'] for genre in sublist))
-    selected_genres = st.multiselect("Choose your favorite genres", all_genres)
+    all_genres = sorted(
+        set(genre for sublist in df['Genres Extracted'] for genre in sublist)
+    )
+    selected_genres = st.multiselect(
+        "Choose your favorite genres", all_genres
+    )
 
     if selected_genres:
-        mask = df['Genres Extracted'].apply(lambda x: any(g in x for g in selected_genres))
+        mask = df['Genres Extracted'].apply(
+            lambda x: any(g in x for g in selected_genres)
+        )
         recs = df[mask].sort_values(by='Rating', ascending=False).head(5)
+
         st.subheader("🔮 Recommended Books:")
-        st.dataframe(recs[['Book Name', 'Author', 'Rating', 'Genres Extracted']])
+        st.dataframe(
+            recs[['Book Name', 'Author', 'Rating', 'Genres Extracted']]
+        )
 
 # --- EDA / Visualization
 st.markdown("---")
 st.subheader("📊 Data Visualizations")
 
-viz_option = st.selectbox("Choose a plot", ["Genre Distribution", "Rating Distribution", "Top Rated Books"])
+viz_option = st.selectbox(
+    "Choose a plot",
+    ["Genre Distribution", "Rating Distribution", "Top Rated Books"]
+)
 
 if viz_option == "Genre Distribution":
-    all_genres_flat = [genre for sublist in df['Genres Extracted'] for genre in sublist]
+    all_genres_flat = [
+        genre for sublist in df['Genres Extracted'] for genre in sublist
+    ]
     genre_counts = pd.Series(all_genres_flat).value_counts().head(15)
 
     st.bar_chart(genre_counts)

@@ -5,7 +5,7 @@ An **end-to-end intelligent book recommendation system** built with NLP, cluster
 ---
 ## 📸 Demo Screenshot
 
-![Preview](https://github.com/Manav2507/Book-Recoomendation-System-NLP-Machine-Learning/blob/main/6_1.png)
+![Preview](https://github.com/Manav2507/Book-Recoomendation-System-NLP-Machine-Learning/blob/main/img/6_1.png)
 
 
 ## 📌 Problem Statement

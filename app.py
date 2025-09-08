@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 # Load preprocessed data
-df = pd.read_excel("complete_preprocessing.xlsx")
+df = pd.read_excel("Recommendation_file.xlsx")
 
 # Ensure genre column is list
 df["Genres Extracted"] = df["Genres Extracted"].apply(

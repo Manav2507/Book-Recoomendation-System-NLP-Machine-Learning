@@ -1,0 +1,12 @@
+pandas
+numpy
+scikit-learn
+nltk
+matplotlib
+seaborn
+wordcloud
+openpyxl
+fuzzywuzzy
+python-Levenshtein
+streamlit
+pytest

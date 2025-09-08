@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 # Load preprocessed data
-df = pd.read_csv("complete_preprocessing.csv")
+df = pd.read_excel("complete_preprocessing.xlsx")
 
 # Ensure genre column is list
 df['Genres Extracted'] = df['Genres Extracted'].apply(eval if isinstance(df['Genres Extracted'].iloc[0], str) else lambda x: x)
